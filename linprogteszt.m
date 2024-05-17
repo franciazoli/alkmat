@@ -1,14 +1,20 @@
-A = [2 6; 3 5; 5 4];
-b = [60 58 75];
-c = [-5, -11];
+%% 2. feladat ábrás
+A = [2 7
+    3 5 
+    6 4];
+b = [77 66 96]';
+c = [-1 1];
+
+[x ,fval ,~ ,~ ,lambda]=linprog(c,A,b,[],[],[0;0],[inf,inf])
+%% 3. feladat klasszik szöveges
+A = [2 7
+    3 4
+    5 3];
+
+b=[70 53 70]';
+c = [-5 -10];
 
 [x ,fval ,~ ,~ ,lambda]=linprog(c,A,b,[],[],[0;0],[inf,inf])
 
-usedA = 2*x(1) + 6*x(2);
-usedB = 3*x(1) + 5*x(2);
-usedC = 5*x(1) + 4*x(2);
-
-b(1)-usedA
-b(3)-usedC
-
-%b-A*x
+b - A*x % maradékok
+lambda.ineqlin %árnyékár
